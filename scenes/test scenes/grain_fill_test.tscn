@@ -7,6 +7,7 @@ script/source = "extends Node2D
 @onready var yellow_zone: ColorRect = $yellowZone
 @onready var green_zone: ColorRect = $greenZone
 @onready var moving_bar: ColorRect = $movingBar
+@onready var grain_level: ColorRect = $grainLevel
 
 @onready var isBarMoving: bool = true
 @onready var isAccelerating: bool = false
@@ -20,6 +21,7 @@ script/source = "extends Node2D
 func _process(delta: float) -> void:
 	updateBar(delta)
 	trackBar(delta)
+	grainBar(delta)
 	print(trackBar(delta))
 	return
 
@@ -62,35 +64,38 @@ func trackBar(delta):
 		score = 'C'
 	#print(score)
 	return score
+
+func grainBar(delta):
+	return
 "
 
 [node name="grain_fill_test" type="Node2D"]
 script = SubResource("GDScript_2vise")
 
 [node name="redZone" type="ColorRect" parent="."]
-offset_left = 211.0
+offset_left = 100.0
 offset_top = 59.0
-offset_right = 964.0
+offset_right = 853.0
 offset_bottom = 99.0
 color = Color(1, 0, 0, 1)
 
 [node name="yellowZone" type="ColorRect" parent="."]
-offset_left = 602.0
+offset_left = 491.0
 offset_top = 59.0
-offset_right = 796.0
+offset_right = 685.0
 offset_bottom = 99.0
 color = Color(0.984314, 1, 0, 1)
 
 [node name="greenZone" type="ColorRect" parent="."]
-offset_left = 692.0
+offset_left = 581.0
 offset_top = 59.0
-offset_right = 740.0
+offset_right = 629.0
 offset_bottom = 99.0
 color = Color(0.286275, 1, 0, 1)
 
 [node name="movingBar" type="ColorRect" parent="."]
-offset_left = 209.0
+offset_left = 98.0
 offset_top = 53.0
-offset_right = 222.0
+offset_right = 111.0
 offset_bottom = 105.0
 color = Color(1, 0.576471, 0, 1)
