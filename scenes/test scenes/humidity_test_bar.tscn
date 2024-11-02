@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://cswctrnatrxto"]
+[gd_scene load_steps=7 format=3 uid="uid://cswctrnatrxto"]
+
+[ext_resource type="FontFile" uid="uid://c7t4xy8vcad5h" path="res://fonts/C&C Red Alert [INET].ttf" id="1_l5nbq"]
 
 [sub_resource type="GDScript" id="GDScript_qbeft"]
 script/source = "extends Node2D
@@ -11,7 +13,10 @@ script/source = "extends Node2D
 @onready var bottom: Marker2D = $MeterBar/Bottom
 @onready var meter_bar: ColorRect = $MeterBar
 @onready var meter_bar_level: ColorRect = $MeterBar/MeterBarLevel
+@onready var score_display: Control = $ScoreDisplay
+@onready var score_label: Label = $ScoreDisplay/ScoreHUD/ScoreLabel
 
+@onready var score: String = 'nil'
 @onready var speed: float = 0.00
 @onready var max_speed: float = 40.00
 @onready var acceleration: float = 14.00
@@ -24,11 +29,21 @@ script/source = "extends Node2D
 
 @onready var new_pos: float = 350
 @onready var t = 0.0
+@onready var finishedPlaying: bool = false
+
+func _ready() -> void:
+	score = 'nil'
+	score_display.visible = false
+	return
 
 func _process(delta: float) -> void:
+	if finishedPlaying == true:
+		return
+	
 	updateLevelBar(delta)
 	updateMeterBar(delta)
 	moveHumidity(delta)
+	displayScore(delta)
 	
 	#t += delta * 0.4
 	#print(new_pos)
@@ -82,11 +97,21 @@ func updateMeterBar(delta):
 		
 	if top.position.y >= bottom.position.y:
 		top.position.y = bottom.position.y
+		score = 'Score: F'
+		finishedPlaying = true
 	elif top.position.y <= meter_bar.position.y - 50:
 		top.position.y = meter_bar.position.y - 50
+		score = 'Score: A'
+		finishedPlaying = true
 	
 	meter_bar_level.size.y = bottom.position.y - top.position.y
 	meter_bar_level.position.y = top.position.y
+	return
+
+func displayScore(delta):
+	if finishedPlaying == true:
+		score_display.visible = true
+		score_label.text = score
 	return
 
 func _on_timer_timeout() -> void:
@@ -103,7 +128,15 @@ size = Vector2(59, 29)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c1pwp"]
 size = Vector2(48, 44)
 
+[sub_resource type="LabelSettings" id="LabelSettings_gcx3x"]
+font_size = 39
+
+[sub_resource type="LabelSettings" id="LabelSettings_u70xh"]
+font = ExtResource("1_l5nbq")
+font_size = 39
+
 [node name="humidityTestBar" type="Node2D"]
+scale = Vector2(0.5, 0.5)
 script = SubResource("GDScript_qbeft")
 
 [node name="RangeBar" type="ColorRect" parent="."]
@@ -127,10 +160,8 @@ offset_top = 2.0
 offset_right = 59.0
 offset_bottom = 28.0
 color = Color(0.2, 0.227451, 0.45098, 1)
-metadata/_edit_lock_ = true
 
 [node name="LevelBarArea" type="Area2D" parent="LevelBar"]
-metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelBar/LevelBarArea"]
 position = Vector2(30.5, 15.5)
@@ -150,9 +181,9 @@ position = Vector2(24, 23)
 shape = SubResource("RectangleShape2D_c1pwp")
 
 [node name="MeterBar" type="ColorRect" parent="."]
-offset_left = 198.0
+offset_left = 722.0
 offset_top = 65.0
-offset_right = 238.0
+offset_right = 762.0
 offset_bottom = 529.0
 color = Color(0.984314, 0.658824, 0.203922, 1)
 
@@ -162,7 +193,7 @@ offset_left = 13.0
 offset_top = 257.0
 offset_right = 29.0
 offset_bottom = 464.0
-color = Color(0.2, 0.227451, 0.45098, 1)
+color = Color(0.180392, 0.690196, 0.509804, 1)
 
 [node name="Top" type="Marker2D" parent="MeterBar"]
 position = Vector2(21, 256)
@@ -174,5 +205,65 @@ position = Vector2(20, 465)
 process_callback = 0
 wait_time = 3.0
 autostart = true
+
+[node name="ScoreDisplay" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 50.0
+offset_top = 476.0
+offset_right = 90.0
+offset_bottom = 516.0
+
+[node name="ColorRect" type="ColorRect" parent="ScoreDisplay"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 4.975
+anchor_top = -6.325
+anchor_right = 4.975
+anchor_bottom = -6.325
+offset_left = 26.0
+offset_top = 7.00002
+offset_right = 342.0
+offset_bottom = 189.0
+color = Color(0.890196, 0.52549, 0.156863, 1)
+
+[node name="Label" type="Label" parent="ScoreDisplay"]
+layout_mode = 0
+offset_left = 294.0
+offset_top = -213.0
+offset_right = 463.0
+offset_bottom = -159.0
+text = "All done!"
+label_settings = SubResource("LabelSettings_gcx3x")
+
+[node name="ScoreHUD" type="Control" parent="ScoreDisplay"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 383.0
+offset_top = 268.0
+offset_right = 423.0
+offset_bottom = 308.0
+
+[node name="GreenBorder" type="ColorRect" parent="ScoreDisplay/ScoreHUD"]
+offset_left = -101.0
+offset_top = -416.0
+offset_right = 90.0
+offset_bottom = -367.0
+color = Color(0.180392, 0.690196, 0.509804, 1)
+
+[node name="OrangeBackground" type="ColorRect" parent="ScoreDisplay/ScoreHUD"]
+offset_left = -95.0
+offset_top = -411.0
+offset_right = 84.0
+offset_bottom = -372.0
+color = Color(0.890196, 0.52549, 0.156863, 1)
+
+[node name="ScoreLabel" type="Label" parent="ScoreDisplay/ScoreHUD"]
+offset_left = -69.0
+offset_top = -414.0
+offset_right = 82.0
+offset_bottom = -357.0
+text = "Score:"
+label_settings = SubResource("LabelSettings_u70xh")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
