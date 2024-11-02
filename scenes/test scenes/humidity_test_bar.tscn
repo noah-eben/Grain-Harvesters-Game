@@ -1,0 +1,176 @@
+[gd_scene load_steps=4 format=3 uid="uid://cswctrnatrxto"]
+
+[sub_resource type="GDScript" id="GDScript_qbeft"]
+script/source = "extends Node2D
+
+@onready var level_bar: ColorRect = $LevelBar
+@onready var range_bar: ColorRect = $RangeBar
+@onready var humidity_bar: ColorRect = $HumidityBar
+@onready var humidity_bar_area: Area2D = $HumidityBar/HumidityBarArea
+@onready var top: Marker2D = $MeterBar/Top
+@onready var bottom: Marker2D = $MeterBar/Bottom
+@onready var meter_bar: ColorRect = $MeterBar
+@onready var meter_bar_level: ColorRect = $MeterBar/MeterBarLevel
+
+@onready var speed: float = 0.00
+@onready var max_speed: float = 40.00
+@onready var acceleration: float = 14.00
+@onready var decceleration: float = 14.00
+
+@onready var level_speed: float = 0.00
+@onready var max_level_speed: float = 1.00
+@onready var level_acceleration: float = 2.00
+@onready var level_decceleration: float = 1.00
+
+@onready var new_pos: float = 350
+@onready var t = 0.0
+
+func _process(delta: float) -> void:
+	updateLevelBar(delta)
+	updateMeterBar(delta)
+	moveHumidity(delta)
+	
+	#t += delta * 0.4
+	#print(new_pos)
+	#humidity_bar.position = humidity_bar.position.lerp(Vector2(humidity_bar.position.x,new_pos),t)
+	#new_pos = randf_range(range_bar.position.y,range_bar.position.y + range_bar.size.y)
+	#humidity_bar.position = humidity_bar.position.lerp(Vector2(humidity_bar.position.x,new_pos),t)
+
+func moveHumidity(delta):
+	#print(new_pos)
+	#new_pos = randf_range(range_bar.position.y,range_bar.position.y + range_bar.size.y)
+	#var tween = create_tween()
+	#tween.tween_property(humidity_bar, \"position\", Vector2(humidity_bar.position.x,new_pos),1)
+	
+	return
+
+func _unhandled_input(event: InputEvent) -> void:
+	if Input.is_action_pressed('ui_cancel'):
+		get_tree().quit()
+	return
+
+func updateLevelBar(delta):
+	if Input.is_action_pressed(\"ui_accept\"):
+		speed = speed + delta * acceleration
+		if speed >= max_speed:
+			speed = max_speed
+	else:
+		speed = speed - delta * decceleration
+		if speed <= -max_speed:
+			speed = -max_speed
+	level_bar.position.y -= speed
+	
+	if level_bar.position.y >= range_bar.position.y + range_bar.size.y - level_bar.size.y:
+		level_bar.position.y = range_bar.position.y + range_bar.size.y -  level_bar.size.y
+		speed = 0
+	elif level_bar.position.y <= range_bar.position.y:
+		level_bar.position.y = range_bar.position.y
+		speed = 0
+	return
+
+func updateMeterBar(delta):
+	if humidity_bar_area.has_overlapping_areas():
+		level_speed = level_speed + delta * level_acceleration
+		if level_speed >= max_level_speed:
+			level_speed = max_level_speed
+	else:
+		level_speed = level_speed - delta * level_decceleration
+		if level_speed <= -max_level_speed:
+			level_speed = -max_level_speed
+	top.position.y -= level_speed
+	#print(meter_bar_level.size.y)
+		
+	if top.position.y >= bottom.position.y:
+		top.position.y = bottom.position.y
+	elif top.position.y <= meter_bar.position.y - 50:
+		top.position.y = meter_bar.position.y - 50
+	
+	meter_bar_level.size.y = bottom.position.y - top.position.y
+	meter_bar_level.position.y = top.position.y
+	return
+
+func _on_timer_timeout() -> void:
+	print(new_pos)
+	new_pos = randf_range(range_bar.position.y,range_bar.position.y + range_bar.size.y - humidity_bar.size.y)
+	var tween = create_tween()
+	tween.tween_property(humidity_bar, \"position\", Vector2(humidity_bar.position.x,new_pos),2).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
+	return
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wcgy0"]
+size = Vector2(59, 29)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c1pwp"]
+size = Vector2(48, 44)
+
+[node name="humidityTestBar" type="Node2D"]
+script = SubResource("GDScript_qbeft")
+
+[node name="RangeBar" type="ColorRect" parent="."]
+offset_left = 110.0
+offset_top = 65.0
+offset_right = 150.0
+offset_bottom = 529.0
+color = Color(0.984314, 0.658824, 0.203922, 1)
+
+[node name="LevelBar" type="ColorRect" parent="."]
+offset_left = 100.0
+offset_top = 264.0
+offset_right = 161.0
+offset_bottom = 294.0
+color = Color(0.219608, 0.478431, 0.87451, 1)
+
+[node name="LevelBarOutline" type="ColorRect" parent="LevelBar"]
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 59.0
+offset_bottom = 28.0
+color = Color(0.2, 0.227451, 0.45098, 1)
+metadata/_edit_lock_ = true
+
+[node name="LevelBarArea" type="Area2D" parent="LevelBar"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelBar/LevelBarArea"]
+position = Vector2(30.5, 15.5)
+shape = SubResource("RectangleShape2D_wcgy0")
+
+[node name="HumidityBar" type="ColorRect" parent="."]
+offset_left = 107.0
+offset_top = 70.0
+offset_right = 155.0
+offset_bottom = 115.0
+color = Color(0.219608, 0.478431, 0.87451, 1)
+
+[node name="HumidityBarArea" type="Area2D" parent="HumidityBar"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HumidityBar/HumidityBarArea"]
+position = Vector2(24, 23)
+shape = SubResource("RectangleShape2D_c1pwp")
+
+[node name="MeterBar" type="ColorRect" parent="."]
+offset_left = 198.0
+offset_top = 65.0
+offset_right = 238.0
+offset_bottom = 529.0
+color = Color(0.984314, 0.658824, 0.203922, 1)
+
+[node name="MeterBarLevel" type="ColorRect" parent="MeterBar"]
+offset_left = 13.0
+offset_top = 257.0
+offset_right = 29.0
+offset_bottom = 464.0
+color = Color(0.2, 0.227451, 0.45098, 1)
+
+[node name="Top" type="Marker2D" parent="MeterBar"]
+position = Vector2(21, 256)
+
+[node name="Bottom" type="Marker2D" parent="MeterBar"]
+position = Vector2(20, 465)
+
+[node name="Timer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
