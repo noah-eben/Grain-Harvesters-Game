@@ -1,3 +1,96 @@
-[gd_scene format=3 uid="uid://uycmkcbi2wsk"]
+[gd_scene load_steps=2 format=3 uid="uid://uycmkcbi2wsk"]
+
+[sub_resource type="GDScript" id="GDScript_2vise"]
+script/source = "extends Node2D
+
+@onready var red_zone: ColorRect = $redZone
+@onready var yellow_zone: ColorRect = $yellowZone
+@onready var green_zone: ColorRect = $greenZone
+@onready var moving_bar: ColorRect = $movingBar
+
+@onready var isBarMoving: bool = true
+@onready var isAccelerating: bool = false
+@onready var hasBeenPressed: bool = false
+@onready var score: String = 'nil'
+@onready var barSpeed: float = 0.00
+@onready var acceleration: float = 30.00
+@onready var decceleration: float = 40.00
+@onready var maxSpeed: float = 10.00
+
+func _process(delta: float) -> void:
+	updateBar(delta)
+	trackBar(delta)
+	print(trackBar(delta))
+	return
+
+func updateBar(delta):
+	if not isBarMoving:
+		return
+	
+	if hasBeenPressed == false:
+		if Input.is_action_pressed('ui_accept'):
+			isAccelerating = true
+		
+		if Input.is_action_just_released(\"ui_accept\"):
+			isAccelerating = false
+			hasBeenPressed = true
+	
+	if isAccelerating:
+		barSpeed = barSpeed + acceleration * delta
+	else:
+		barSpeed = barSpeed - decceleration * delta
+	
+	if barSpeed <= 0:
+		barSpeed = 0
+	elif barSpeed >= maxSpeed:
+		barSpeed = maxSpeed
+	
+	if moving_bar.position.x > (red_zone.position.x + red_zone.size.x):
+		moving_bar.position.x = red_zone.position.x + red_zone.size.x - moving_bar.size.x
+	
+	moving_bar.position.x += barSpeed
+	return
+
+func trackBar(delta):
+	if yellow_zone.position.x < moving_bar.position.x and moving_bar.position.x < yellow_zone.position.x + yellow_zone.size.x:
+		score = 'B'
+		if green_zone.position.x < moving_bar.position.x + moving_bar.size.x/2 and moving_bar.position.x < green_zone.position.x + green_zone.size.x:
+			score = \"A\"
+			return score
+		return score
+	else:
+		score = 'C'
+	#print(score)
+	return score
+"
 
 [node name="grain_fill_test" type="Node2D"]
+script = SubResource("GDScript_2vise")
+
+[node name="redZone" type="ColorRect" parent="."]
+offset_left = 211.0
+offset_top = 59.0
+offset_right = 964.0
+offset_bottom = 99.0
+color = Color(1, 0, 0, 1)
+
+[node name="yellowZone" type="ColorRect" parent="."]
+offset_left = 602.0
+offset_top = 59.0
+offset_right = 796.0
+offset_bottom = 99.0
+color = Color(0.984314, 1, 0, 1)
+
+[node name="greenZone" type="ColorRect" parent="."]
+offset_left = 692.0
+offset_top = 59.0
+offset_right = 740.0
+offset_bottom = 99.0
+color = Color(0.286275, 1, 0, 1)
+
+[node name="movingBar" type="ColorRect" parent="."]
+offset_left = 209.0
+offset_top = 53.0
+offset_right = 222.0
+offset_bottom = 105.0
+color = Color(1, 0.576471, 0, 1)
