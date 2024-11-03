@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctpn7fuuo4nnm"]
+
+[ext_resource type="Script" path="res://DialogueFromEthan/scene_1.gd" id="1_ohcpn"]
+
+[node name="Scene1" type="Node2D"]
+script = ExtResource("1_ohcpn")

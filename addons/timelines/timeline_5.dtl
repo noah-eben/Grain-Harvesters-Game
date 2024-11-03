@@ -1,0 +1,6 @@
+join character1 (New portrait) left
+And that completes your first day! You're off to the races!\
+Look I'm going on vacation now and I'll be leaving you in-charge.
+Please try your best and good luck! I believe in you!
+- End
+	[signal arg="end_tutorial"]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cswctrnatrxto"]
+[gd_scene load_steps=8 format=3 uid="uid://cswctrnatrxto"]
 
 [ext_resource type="FontFile" uid="uid://c7t4xy8vcad5h" path="res://fonts/C&C Red Alert [INET].ttf" id="1_l5nbq"]
+[ext_resource type="PackedScene" uid="uid://crkyr2gjki18q" path="res://scenes/button.tscn" id="2_qjv4k"]
 
 [sub_resource type="GDScript" id="GDScript_qbeft"]
 script/source = "extends Node2D
@@ -115,11 +116,17 @@ func displayScore(delta):
 	return
 
 func _on_timer_timeout() -> void:
+	if finishedPlaying == true:
+		return
 	print(new_pos)
 	new_pos = randf_range(range_bar.position.y,range_bar.position.y + range_bar.size.y - humidity_bar.size.y)
 	var tween = create_tween()
 	tween.tween_property(humidity_bar, \"position\", Vector2(humidity_bar.position.x,new_pos),2).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
 	return
+
+
+func _on_button_pressed() -> void:
+	SceneTransition.change_scene(\"res://scenes/price_stock_sample_map.tscn\")
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wcgy0"]
@@ -136,22 +143,22 @@ font = ExtResource("1_l5nbq")
 font_size = 39
 
 [node name="humidityTestBar" type="Node2D"]
-scale = Vector2(0.5, 0.5)
 script = SubResource("GDScript_qbeft")
 
 [node name="RangeBar" type="ColorRect" parent="."]
-offset_left = 110.0
-offset_top = 65.0
-offset_right = 150.0
-offset_bottom = 529.0
+offset_left = 158.0
+offset_top = 51.0
+offset_right = 198.0
+offset_bottom = 515.0
 color = Color(0.984314, 0.658824, 0.203922, 1)
 
 [node name="LevelBar" type="ColorRect" parent="."]
-offset_left = 100.0
-offset_top = 264.0
-offset_right = 161.0
-offset_bottom = 294.0
+offset_left = 148.0
+offset_top = 250.0
+offset_right = 209.0
+offset_bottom = 280.0
 color = Color(0.219608, 0.478431, 0.87451, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="LevelBarOutline" type="ColorRect" parent="LevelBar"]
 layout_mode = 0
@@ -168,10 +175,10 @@ position = Vector2(30.5, 15.5)
 shape = SubResource("RectangleShape2D_wcgy0")
 
 [node name="HumidityBar" type="ColorRect" parent="."]
-offset_left = 107.0
-offset_top = 70.0
-offset_right = 155.0
-offset_bottom = 115.0
+offset_left = 155.0
+offset_top = 56.0
+offset_right = 203.0
+offset_bottom = 101.0
 color = Color(0.219608, 0.478431, 0.87451, 1)
 
 [node name="HumidityBarArea" type="Area2D" parent="HumidityBar"]
@@ -181,10 +188,10 @@ position = Vector2(24, 23)
 shape = SubResource("RectangleShape2D_c1pwp")
 
 [node name="MeterBar" type="ColorRect" parent="."]
-offset_left = 722.0
-offset_top = 65.0
-offset_right = 762.0
-offset_bottom = 529.0
+offset_left = 770.0
+offset_top = 51.0
+offset_right = 810.0
+offset_bottom = 515.0
 color = Color(0.984314, 0.658824, 0.203922, 1)
 
 [node name="MeterBarLevel" type="ColorRect" parent="MeterBar"]
@@ -209,10 +216,10 @@ autostart = true
 [node name="ScoreDisplay" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 50.0
-offset_top = 476.0
-offset_right = 90.0
-offset_bottom = 516.0
+offset_left = 110.0
+offset_top = 332.0
+offset_right = 150.0
+offset_bottom = 372.0
 
 [node name="ColorRect" type="ColorRect" parent="ScoreDisplay"]
 layout_mode = 1
@@ -225,6 +232,8 @@ offset_left = 26.0
 offset_top = 7.00002
 offset_right = 342.0
 offset_bottom = 189.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.890196, 0.52549, 0.156863, 1)
 
 [node name="Label" type="Label" parent="ScoreDisplay"]
@@ -244,14 +253,8 @@ offset_top = 268.0
 offset_right = 423.0
 offset_bottom = 308.0
 
-[node name="GreenBorder" type="ColorRect" parent="ScoreDisplay/ScoreHUD"]
-offset_left = -101.0
-offset_top = -416.0
-offset_right = 90.0
-offset_bottom = -367.0
-color = Color(0.180392, 0.690196, 0.509804, 1)
-
 [node name="OrangeBackground" type="ColorRect" parent="ScoreDisplay/ScoreHUD"]
+layout_mode = 0
 offset_left = -95.0
 offset_top = -411.0
 offset_right = 84.0
@@ -259,6 +262,7 @@ offset_bottom = -372.0
 color = Color(0.890196, 0.52549, 0.156863, 1)
 
 [node name="ScoreLabel" type="Label" parent="ScoreDisplay/ScoreHUD"]
+layout_mode = 0
 offset_left = -69.0
 offset_top = -414.0
 offset_right = 82.0
@@ -266,4 +270,13 @@ offset_bottom = -357.0
 text = "Score:"
 label_settings = SubResource("LabelSettings_u70xh")
 
+[node name="Button" parent="ScoreDisplay" instance=ExtResource("2_qjv4k")]
+layout_mode = 1
+offset_left = 222.0
+offset_top = -6.0
+offset_right = 484.0
+offset_bottom = 90.0
+text = "Next Scene"
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="ScoreDisplay/Button" to="." method="_on_button_pressed"]

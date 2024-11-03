@@ -8,4 +8,4 @@
 [node name="HumidityLevelMapTest" parent="." instance=ExtResource("1_mtad6")]
 
 [node name="humidityTestBar" parent="." instance=ExtResource("2_nkvw5")]
-position = Vector2(359, 74)
+position = Vector2(16, -12)

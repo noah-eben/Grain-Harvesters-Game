@@ -1,0 +1,5 @@
+join character1 (New portrait) left [z_index="2"]
+Welcome to Grain Harvester !
+Since this is your first day on the Job, I'll walk you through.
+- Start
+	[signal arg="start_game_scene"]
