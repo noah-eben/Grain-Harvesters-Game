@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://cejseeacd3gfd"]
+[gd_scene load_steps=9 format=3 uid="uid://cejseeacd3gfd"]
 
+[ext_resource type="Texture2D" uid="uid://dwhioerr5rret" path="res://assets/kenney_pixel-platformer-farm-expansion/Tiles/tile_0006.png" id="1_ga87k"]
 [ext_resource type="FontFile" uid="uid://c7t4xy8vcad5h" path="res://fonts/C&C Red Alert [INET].ttf" id="1_ymwxk"]
 [ext_resource type="PackedScene" uid="uid://crkyr2gjki18q" path="res://scenes/button.tscn" id="2_lnw20"]
 
@@ -86,6 +87,14 @@ font_size = 60
 font = ExtResource("1_ymwxk")
 font_size = 39
 
+[sub_resource type="LabelSettings" id="LabelSettings_uaim8"]
+font = ExtResource("1_ymwxk")
+font_size = 60
+
+[sub_resource type="LabelSettings" id="LabelSettings_mfy2j"]
+font = ExtResource("1_ymwxk")
+font_size = 29
+
 [node name="priceStockTest" type="Node2D"]
 script = SubResource("GDScript_colwc")
 
@@ -95,6 +104,8 @@ offset_top = 35.0
 offset_right = 837.0
 offset_bottom = 75.0
 color = Color(1, 0, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="redZone"]
 
 [node name="yellowZone" type="ColorRect" parent="."]
 offset_left = 475.0
@@ -115,15 +126,20 @@ offset_left = 580.0
 offset_top = 29.0
 offset_right = 593.0
 offset_bottom = 81.0
-color = Color(1, 0.576471, 0, 1)
+color = Color(1, 0.576471, 0, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="movingBar"]
+position = Vector2(6, 25.5)
+scale = Vector2(0.777778, 3.16667)
+texture = ExtResource("1_ga87k")
 
 [node name="ScoreDisplay" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 111.0
-offset_top = 396.0
-offset_right = 151.0
-offset_bottom = 436.0
+offset_left = 93.0
+offset_top = 366.0
+offset_right = 133.0
+offset_bottom = 406.0
 
 [node name="ColorRect" type="ColorRect" parent="ScoreDisplay"]
 layout_mode = 1
@@ -183,9 +199,33 @@ label_settings = SubResource("LabelSettings_bji0a")
 [node name="Button" parent="ScoreDisplay" instance=ExtResource("2_lnw20")]
 layout_mode = 1
 offset_left = 234.0
-offset_top = -46.0
+offset_top = -68.0
 offset_right = 496.0
-offset_bottom = 50.0
+offset_bottom = 28.0
 text = "Next"
+
+[node name="Instructions" type="Label" parent="."]
+offset_left = 157.0
+offset_top = 459.0
+offset_right = 836.0
+offset_bottom = 519.0
+text = "Aim for the right price zone!"
+label_settings = SubResource("LabelSettings_uaim8")
+
+[node name="Too Low" type="Label" parent="."]
+offset_left = 36.0
+offset_top = 89.0
+offset_right = 139.0
+offset_bottom = 120.0
+text = "Too Low"
+label_settings = SubResource("LabelSettings_mfy2j")
+
+[node name="Too High" type="Label" parent="."]
+offset_left = 810.0
+offset_top = 89.0
+offset_right = 913.0
+offset_bottom = 120.0
+text = "Too High"
+label_settings = SubResource("LabelSettings_mfy2j")
 
 [connection signal="pressed" from="ScoreDisplay/Button" to="." method="_on_button_pressed"]

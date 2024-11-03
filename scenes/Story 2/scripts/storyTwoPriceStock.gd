@@ -9,7 +9,7 @@ extends Node2D
 
 @onready var isBarMoving: bool = true
 @onready var score: String = 'nil'
-@onready var barSpeed: float = 450.00
+@onready var barSpeed: float = 550.00
 @onready var finishedPlaying = false
 
 func _ready() -> void:
@@ -59,8 +59,8 @@ func displayScore(delta):
 	if finishedPlaying == true:
 		score_display.visible = true
 		score_label.text = "Score:  " + trackBar(delta)
-		print(trackBar(delta))
 	return
 
 func _on_button_pressed() -> void:
+	Global.story_two_score += Global.table[score]
 	SceneTransition.change_scene("res://scenes/Story 2/storyTwoEndArea.tscn")

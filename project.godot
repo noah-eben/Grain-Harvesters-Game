@@ -20,11 +20,16 @@ config/icon="res://icon.svg"
 
 SceneTransition="*res://scenes/scene_transition.tscn"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
+AudioPlayer="*res://scenes/audio_player.tscn"
+Global="*res://scripts/global.gd"
 
 [dialogic]
 
 directories/dch_directory={
-"character1": "res://addons/Characters/character1.dch"
+"character1": "res://addons/Characters/character1.dch",
+"cyborg_wizard_farmer": "res://addons/Characters/cyborg_wizard_farmer.dch",
+"pirate_farmer": "res://addons/Characters/pirate_farmer.dch",
+"space_farmer": "res://addons/Characters/space_farmer.dch"
 }
 directories/dtl_directory={
 "character1_TL": "res://addons/timelines/character1_TL.dtl",

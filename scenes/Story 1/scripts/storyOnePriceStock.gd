@@ -52,15 +52,14 @@ func stopBar(delta):
 	if Input.is_action_just_pressed('ui_accept'):
 		isBarMoving = false
 		finishedPlaying = true
-		print(score)
 	return
 
 func displayScore(delta):
 	if finishedPlaying == true:
 		score_display.visible = true
 		score_label.text = "Score:  " + trackBar(delta)
-		print(trackBar(delta))
 	return
 
 func _on_button_pressed() -> void:
+	Global.story_one_score += Global.table[score]
 	SceneTransition.change_scene("res://scenes/Story 1/storyOneEndArea.tscn")

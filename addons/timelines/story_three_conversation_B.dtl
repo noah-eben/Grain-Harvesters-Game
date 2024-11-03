@@ -1,8 +1,17 @@
-join character1 left
+join cyborg_wizard_farmer left
+You did it again. You outdid yourself!
+...
 Well...
-That's it!
-I guess you're going to take over from here now.
-Thanks for...EVERYTHING!
-GOOD BYE NOW!
-- End
-	[signal arg="start_next_scene"]
+That's it! I can't do this anymore.
+leave cyborg_wizard_farmer
+join character1 left
+It was me ALL along! I 've been trying to run you out of town...
+But the only thing that's left town is my wallet because of how much grain I've been buying
+I guess I should have started by doing this from the get go...
+Please Please PLEASE can I have my job back??? 
+- Yeah, sure!
+	Yeeeeehaaaaaah!!!! This means the whole wide world to me, partner! I don't think I can ever repay you! I wish you the best in whatever you do after here! Bye!
+- Nope, sorry!
+	Shoot! I thought that would work! Well that's fine. Atleast I tried. \
+Well I wish you the best in your new grain marketing career. You're gonna do great buddy! I know it. Bye! (Runs off crying)
+[signal arg="start_next_scene"]

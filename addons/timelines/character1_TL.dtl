@@ -1,5 +1,11 @@
 join character1 (New portrait) left [z_index="2"]
-Welcome to Grain Harvester !
-Since this is your first day on the Job, I'll walk you through.
+HOOOOOOOWDY!!!!
+Welcome to Grain Incorporated!
+The name's Billy Grainsby and I'm the CEO of the finest grain marketing business this side of the Tennessee!\
+I take it you've heard of me...
+Harvesting's the name and Selling's the game. But before you can sell that grain, you've got to collect it and store it right!
+Here I'll show you the ropes
+leave character1
+Use the 'SPACEBAR' key to perform tasks
 - Start
 	[signal arg="start_game_scene"]

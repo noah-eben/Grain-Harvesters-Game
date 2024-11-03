@@ -13,9 +13,9 @@ extends Node2D
 @onready var hasBeenPressed: bool = false
 @onready var score: String = 'nil'
 @onready var barSpeed: float = 0.00
-@onready var acceleration: float = 30.00
+@onready var acceleration: float = 40.00
 @onready var decceleration: float = 40.00
-@onready var maxSpeed: float = 10.00
+@onready var maxSpeed: float = 15.00
 @onready var finishedPlaying = false
 
 func _ready() -> void:
@@ -84,4 +84,5 @@ func displayScore(delta):
 	return
 
 func _on_button_pressed() -> void:
+	Global.story_two_score += Global.table[score]
 	SceneTransition.change_scene("res://scenes/Story 2/storyTwoHumidityLevel.tscn")

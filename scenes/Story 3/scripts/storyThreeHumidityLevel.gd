@@ -14,8 +14,8 @@ extends Node2D
 @onready var score: String = 'nil'
 @onready var speed: float = 0.00
 @onready var max_speed: float = 40.00
-@onready var acceleration: float = 14.00
-@onready var decceleration: float = 14.00
+@onready var acceleration: float = 40.00
+@onready var decceleration: float = 40.00
 
 @onready var level_speed: float = 0.00
 @onready var max_level_speed: float = 1.00
@@ -92,11 +92,11 @@ func updateMeterBar(delta):
 		
 	if top.position.y >= bottom.position.y:
 		top.position.y = bottom.position.y
-		score = 'Score: F'
+		score = 'C'
 		finishedPlaying = true
 	elif top.position.y <= meter_bar.position.y - 50:
 		top.position.y = meter_bar.position.y - 50
-		score = 'Score: A'
+		score = 'A'
 		finishedPlaying = true
 	
 	meter_bar_level.size.y = bottom.position.y - top.position.y
@@ -106,13 +106,12 @@ func updateMeterBar(delta):
 func displayScore(delta):
 	if finishedPlaying == true:
 		score_display.visible = true
-		score_label.text = score
+		score_label.text = 'Score: ' + score
 	return
 
 func _on_timer_timeout() -> void:
 	if finishedPlaying == true:
 		return
-	print(new_pos)
 	new_pos = randf_range(range_bar.position.y,range_bar.position.y + range_bar.size.y - humidity_bar.size.y)
 	var tween = create_tween()
 	tween.tween_property(humidity_bar, "position", Vector2(humidity_bar.position.x,new_pos),2).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
@@ -120,4 +119,5 @@ func _on_timer_timeout() -> void:
 
 
 func _on_button_pressed() -> void:
+	Global.story_three_score += Global.table[score]
 	SceneTransition.change_scene("res://scenes/Story 3/storyThreePriceStock.tscn")

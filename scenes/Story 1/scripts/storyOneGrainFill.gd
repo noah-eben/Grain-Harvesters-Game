@@ -84,4 +84,6 @@ func displayScore(delta):
 	return
 
 func _on_button_pressed() -> void:
+	Global.story_one_score += Global.table[score]
+	print(Global.story_one_score)
 	SceneTransition.change_scene("res://scenes/Story 1/storyOneHumidityLevel.tscn")

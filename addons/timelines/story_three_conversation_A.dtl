@@ -1,4 +1,9 @@
-join character1 left
-This is it! Story 3 at last! Let. it. begin!
+It's officially Day 3! Hard to believe how fast time flies! Time to open shop!
+join cyborg_wizard_farmer left
+Bzzz! How...bzz..dy, human! My name is Billy 'Cyborgious" Grainsoldolf and I'm a cyborg wizard from the future here to gather some grain from you. I need to take it...back to the future!
+There's a grain war that has left cyborg-kind and wizard-kind completely without grain and I have been sent to gather grain and witness the man that caused the event that caused this.
+The replacing of a super qualified grains marketer.
+Only time will tell if it was the right thing corporate..I mean whoever decided this, should have done and if they will ever see the error of their ways.
+Anyway...let's get some grain!!!
 - Finish it!
 	[signal arg="start_next_scene"]

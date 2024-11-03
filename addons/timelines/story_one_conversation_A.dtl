@@ -1,4 +1,7 @@
-join character1 left
-This is the first difficulty. Let's see what you've got!
+Alright! It's day one as the CEO and it's time to get to work. Look's like you've got your first customer!
+join space_farmer left
+HOOOWW-ahem...I mean Greetings, fellow earthling. It is I, Billy the Astronaut, here to purchase some of your earthly grain!
+Why I never...My name is NOT Billy Grainsby. I've never heard of such a man in my entire astonaut career. I'm just here to gather some of you grainiest grainlings to take with me on my next trip to Mars.
+Does that seem to be a problem to you, mister? Do I need to get NASA involved?...Good! I'll take some ASAP. Give me your best batch.
 - Let's go!
 	[signal arg="start_next_scene"]

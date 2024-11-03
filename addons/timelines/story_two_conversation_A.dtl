@@ -1,4 +1,8 @@
-join character1 left
-This is the second difficulty. Show your skills!!
+It's day two! Time for another fun day of grain marketing! Let's see who comes in today.
+join pirate_farmer left
+Arrrrg! 'Tis me, Billy the Pirate! Me heard there be a new grain harvester in town stealing other people's jobs and me thought..me'd take a look with me one good eye at the scally-wag that thinks he be better than others.
+Argh?? Who be this Billy Grainsby yee speak of?? Couldn't be me!
+Me only needs some grain for the long trip across the Seven Seas Me be about to embark on. Can ya help a pirate out??
+Quick before ye walketh the plank!
 - Round 2!
 	[signal arg="start_next_scene"]

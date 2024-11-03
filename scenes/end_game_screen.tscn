@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://dx4r5aiwvcc3j"]
+[gd_scene load_steps=12 format=4 uid="uid://dx4r5aiwvcc3j"]
 
 [ext_resource type="Texture2D" uid="uid://b6ibgtmbdjs3a" path="res://assets/sky_back.png" id="1_stcux"]
 [ext_resource type="Script" path="res://scripts/end_game_screen.gd" id="1_yb2sv"]
@@ -8,11 +8,16 @@
 [ext_resource type="Script" path="res://scripts/sky_fore.gd" id="4_2x7xm"]
 [ext_resource type="Texture2D" uid="uid://cackqck3fgums" path="res://assets/sky_fore.png" id="5_iqqps"]
 [ext_resource type="TileSet" uid="uid://c1vwb5t31smkh" path="res://tilemap resources/grain_fill_map_test.tres" id="6_qpqdd"]
-[ext_resource type="PackedScene" uid="uid://crkyr2gjki18q" path="res://scenes/button.tscn" id="9_han04"]
+[ext_resource type="FontFile" uid="uid://s8bq667eahpw" path="res://fonts/Namaku.ttf" id="9_iugba"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2l2jj"]
 font = ExtResource("2_d43c0")
 font_size = 120
+
+[sub_resource type="LabelSettings" id="LabelSettings_yjp65"]
+font = ExtResource("9_iugba")
+font_size = 40
+font_color = Color(1, 0.576471, 0, 1)
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -31,9 +36,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -218.0
-offset_top = -222.0
+offset_top = -267.0
 offset_right = 239.0
-offset_bottom = -111.0
+offset_bottom = -147.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -85,9 +90,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -466.0
-offset_top = -74.0
+offset_top = -166.0
 offset_right = 474.0
-offset_bottom = 54.0
+offset_bottom = -38.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -97,10 +102,22 @@ label_settings = SubResource("LabelSettings_2l2jj")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" parent="." instance=ExtResource("9_han04")]
+[node name="Performance" type="Label" parent="."]
 layout_mode = 1
-offset_top = 73.0
-offset_bottom = 169.0
-text = "Close Game"
-
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -466.0
+offset_top = 19.0
+offset_right = 474.0
+offset_bottom = 147.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Grade"
+label_settings = SubResource("LabelSettings_yjp65")
+horizontal_alignment = 1
+vertical_alignment = 1

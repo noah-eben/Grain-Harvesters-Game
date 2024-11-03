@@ -1,4 +1,8 @@
-join character1 left
-End of story 2!
+join pirate_farmer left
+Howdy! I mean Arrghh! This here be some of the finest grain me ever laid me one eye on!
+I suppose there do be some truth in the matter...
+Ol' Billy Grainsby (whoever that is!) must be jealous of the skills ye be displaying out here!
+I bet he wishes he was as good as you!...*sob* *sob*
+I MEAN...there she blows! Me ship is about to take off so I'll be taking me leave! Cheerio!
 - One more!
 	[signal arg="start_next_scene"]

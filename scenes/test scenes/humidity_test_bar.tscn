@@ -1,5 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://cswctrnatrxto"]
+[gd_scene load_steps=11 format=3 uid="uid://cswctrnatrxto"]
 
+[ext_resource type="Texture2D" uid="uid://b4vuwofxl703u" path="res://assets/kenney_pixel-platformer-farm-expansion/Tiles/tile_0009.png" id="1_5vdu2"]
+[ext_resource type="Texture2D" uid="uid://dp6ebwgx71o0c" path="res://assets/kenney_pixel-platformer-farm-expansion/Tiles/tile_0026.png" id="1_k1d0q"]
 [ext_resource type="FontFile" uid="uid://c7t4xy8vcad5h" path="res://fonts/C&C Red Alert [INET].ttf" id="1_l5nbq"]
 [ext_resource type="PackedScene" uid="uid://crkyr2gjki18q" path="res://scenes/button.tscn" id="2_qjv4k"]
 
@@ -99,11 +101,11 @@ func updateMeterBar(delta):
 		
 	if top.position.y >= bottom.position.y:
 		top.position.y = bottom.position.y
-		score = 'Score: F'
+		score = 'C'
 		finishedPlaying = true
 	elif top.position.y <= meter_bar.position.y - 50:
 		top.position.y = meter_bar.position.y - 50
-		score = 'Score: A'
+		score = 'A'
 		finishedPlaying = true
 	
 	meter_bar_level.size.y = bottom.position.y - top.position.y
@@ -113,7 +115,7 @@ func updateMeterBar(delta):
 func displayScore(delta):
 	if finishedPlaying == true:
 		score_display.visible = true
-		score_label.text = score
+		score_label.text = 'Score: ' + score
 	return
 
 func _on_timer_timeout() -> void:
@@ -131,7 +133,7 @@ func _on_button_pressed() -> void:
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wcgy0"]
-size = Vector2(59, 29)
+size = Vector2(59, 35)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c1pwp"]
 size = Vector2(48, 44)
@@ -144,6 +146,10 @@ font_size = 60
 font = ExtResource("1_l5nbq")
 font_size = 39
 
+[sub_resource type="LabelSettings" id="LabelSettings_gjig5"]
+font = ExtResource("1_l5nbq")
+font_size = 39
+
 [node name="humidityTestBar" type="Node2D"]
 script = SubResource("GDScript_qbeft")
 
@@ -152,14 +158,14 @@ offset_left = 158.0
 offset_top = 51.0
 offset_right = 198.0
 offset_bottom = 515.0
-color = Color(0.984314, 0.658824, 0.203922, 1)
+color = Color(0.246948, 0.610434, 0.524387, 1)
 
 [node name="LevelBar" type="ColorRect" parent="."]
 offset_left = 148.0
 offset_top = 250.0
 offset_right = 209.0
 offset_bottom = 280.0
-color = Color(0.219608, 0.478431, 0.87451, 1)
+color = Color(0.219608, 0.478431, 0.87451, 0)
 metadata/_edit_use_anchors_ = true
 
 [node name="LevelBarOutline" type="ColorRect" parent="LevelBar"]
@@ -168,7 +174,7 @@ offset_left = 2.0
 offset_top = 2.0
 offset_right = 59.0
 offset_bottom = 28.0
-color = Color(0.2, 0.227451, 0.45098, 1)
+color = Color(0.2, 0.227451, 0.45098, 0)
 
 [node name="LevelBarArea" type="Area2D" parent="LevelBar"]
 
@@ -176,18 +182,28 @@ color = Color(0.2, 0.227451, 0.45098, 1)
 position = Vector2(30.5, 15.5)
 shape = SubResource("RectangleShape2D_wcgy0")
 
+[node name="Sprite2D" type="Sprite2D" parent="LevelBar"]
+position = Vector2(31, 7)
+scale = Vector2(3.11111, 2.72222)
+texture = ExtResource("1_5vdu2")
+
 [node name="HumidityBar" type="ColorRect" parent="."]
 offset_left = 155.0
 offset_top = 56.0
 offset_right = 203.0
 offset_bottom = 101.0
-color = Color(0.219608, 0.478431, 0.87451, 1)
+color = Color(0.219608, 0.478431, 0.87451, 0)
 
 [node name="HumidityBarArea" type="Area2D" parent="HumidityBar"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HumidityBar/HumidityBarArea"]
 position = Vector2(24, 23)
 shape = SubResource("RectangleShape2D_c1pwp")
+
+[node name="Sprite2D" type="Sprite2D" parent="HumidityBar"]
+position = Vector2(28, 15)
+scale = Vector2(3.33333, 3.33333)
+texture = ExtResource("1_k1d0q")
 
 [node name="MeterBar" type="ColorRect" parent="."]
 offset_left = 770.0
@@ -219,9 +235,9 @@ autostart = true
 layout_mode = 3
 anchors_preset = 0
 offset_left = 110.0
-offset_top = 332.0
+offset_top = 393.0
 offset_right = 150.0
-offset_bottom = 372.0
+offset_bottom = 433.0
 
 [node name="ColorRect" type="ColorRect" parent="ScoreDisplay"]
 layout_mode = 1
@@ -279,6 +295,14 @@ offset_top = -6.0
 offset_right = 484.0
 offset_bottom = 90.0
 text = "Next Scene"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 223.0
+offset_top = 18.0
+offset_right = 756.0
+offset_bottom = 58.0
+text = "Follow the can to maintain humidity!"
+label_settings = SubResource("LabelSettings_gjig5")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="ScoreDisplay/Button" to="." method="_on_button_pressed"]

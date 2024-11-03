@@ -1,4 +1,6 @@
-join character1 left
-You made Grade * grain! You made X dollars!
+join space_farmer left
+Shoot! That was some good grain marketing, if I ever laid eyes on such a thing!
+'Tis truly a thing of beauty *sob* *sob*
+I MEAN would you look at the time! Got's to skidadle back to Mars! See ya pal!
 - Next!
 	[signal arg="start_next_scene"]

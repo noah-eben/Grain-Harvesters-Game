@@ -1,6 +1,14 @@
 join character1 (New portrait) left
-And that completes your first day! You're off to the races!\
-Look I'm going on vacation now and I'll be leaving you in-charge.
-Please try your best and good luck! I believe in you!
+Not too bad. I see you're a fast learner.
+Come to think of it...what brings you round these here parts?
+REPLACEMENT?!?
+Now wait just one minute! You think you can waltz in here and take over just because corporate says you can?...you've got another thing coming.
+Everyone knows when you mess with the bull, you best be ready to get the horns!\
+I'll be back, you hear me!
+...
+It's not my fault I like to take naps in the grain silos. I can't help that it's cozy in there!
+This job is A LOT harder than you think...
+...but with a little practice, I know you can do it! I believe in you! Just stay strong.
+I mean...umm...I'm getting out of here. Goodbye!
 - End
 	[signal arg="end_tutorial"]
