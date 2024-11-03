@@ -1,13 +1,14 @@
-[gd_scene load_steps=10 format=4 uid="uid://dx4r5aiwvcc3j"]
+[gd_scene load_steps=11 format=4 uid="uid://dx4r5aiwvcc3j"]
 
-[ext_resource type="Script" path="res://scripts/menu.gd" id="1_ljdfv"]
 [ext_resource type="Texture2D" uid="uid://b6ibgtmbdjs3a" path="res://assets/sky_back.png" id="1_stcux"]
+[ext_resource type="Script" path="res://scripts/end_game_screen.gd" id="1_yb2sv"]
 [ext_resource type="FontFile" uid="uid://c7t4xy8vcad5h" path="res://fonts/C&C Red Alert [INET].ttf" id="2_d43c0"]
 [ext_resource type="Script" path="res://scripts/sky_middle.gd" id="2_ei6ni"]
 [ext_resource type="Texture2D" uid="uid://c4cdbvocxa36o" path="res://assets/sky_middle.png" id="3_gpbfv"]
 [ext_resource type="Script" path="res://scripts/sky_fore.gd" id="4_2x7xm"]
 [ext_resource type="Texture2D" uid="uid://cackqck3fgums" path="res://assets/sky_fore.png" id="5_iqqps"]
 [ext_resource type="TileSet" uid="uid://c1vwb5t31smkh" path="res://tilemap resources/grain_fill_map_test.tres" id="6_qpqdd"]
+[ext_resource type="PackedScene" uid="uid://crkyr2gjki18q" path="res://scenes/button.tscn" id="9_han04"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2l2jj"]
 font = ExtResource("2_d43c0")
@@ -20,7 +21,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ljdfv")
+script = ExtResource("1_yb2sv")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
@@ -95,3 +96,11 @@ text = "Thanks for playing!"
 label_settings = SubResource("LabelSettings_2l2jj")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Button" parent="." instance=ExtResource("9_han04")]
+layout_mode = 1
+offset_top = 73.0
+offset_bottom = 169.0
+text = "Close Game"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
