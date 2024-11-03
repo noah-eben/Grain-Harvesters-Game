@@ -1,8 +1,7 @@
 extends Node2D
 
 func _ready() -> void:
-	print('main_area')
-	run_dialogue("character1_TL")
+	run_dialogue("story_one_conversation_B")
 	Dialogic.signal_event.connect(dialogueSignal)
 
 func _process(delta: float) -> void:
@@ -13,6 +12,6 @@ func run_dialogue(dialogue_string):
 	Dialogic.start(dialogue_string)
 
 func dialogueSignal(arg: String):
-	if arg == "start_game_scene":
-		print('signal received')
-		SceneTransition.change_scene("res://scenes/grain_fill_sample_scene.tscn")
+	if arg == "end_tutorial":
+		print('end of tutorial')
+		SceneTransition.change_scene("res://scenes/menu.tscn")

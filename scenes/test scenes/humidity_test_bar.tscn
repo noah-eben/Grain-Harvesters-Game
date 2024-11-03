@@ -33,6 +33,7 @@ script/source = "extends Node2D
 @onready var finishedPlaying: bool = false
 
 func _ready() -> void:
+	print('humidity_level_sample')
 	score = 'nil'
 	score_display.visible = false
 	return
@@ -136,7 +137,8 @@ size = Vector2(59, 29)
 size = Vector2(48, 44)
 
 [sub_resource type="LabelSettings" id="LabelSettings_gcx3x"]
-font_size = 39
+font = ExtResource("1_l5nbq")
+font_size = 60
 
 [sub_resource type="LabelSettings" id="LabelSettings_u70xh"]
 font = ExtResource("1_l5nbq")

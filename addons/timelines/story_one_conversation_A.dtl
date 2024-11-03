@@ -1,0 +1,4 @@
+join character1 left
+This is the first difficulty. Let's see what you've got!
+- Let's go!
+	[signal arg="start_game_scene"]

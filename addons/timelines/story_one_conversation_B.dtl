@@ -1,0 +1,4 @@
+join character1 left
+You made Grade * grain! You made X dollars!
+- Next!
+	[signal arg="start_next_scene"]

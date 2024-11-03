@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=4 uid="uid://b0x8mffm02dho"]
+[gd_scene load_steps=14 format=4 uid="uid://b0x8mffm02dho"]
 
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_ljdfv"]
 [ext_resource type="Texture2D" uid="uid://b6ibgtmbdjs3a" path="res://assets/sky_back.png" id="1_stcux"]
+[ext_resource type="FontFile" uid="uid://c7t4xy8vcad5h" path="res://fonts/C&C Red Alert [INET].ttf" id="2_d43c0"]
 [ext_resource type="Script" path="res://scripts/sky_middle.gd" id="2_ei6ni"]
 [ext_resource type="Texture2D" uid="uid://c4cdbvocxa36o" path="res://assets/sky_middle.png" id="3_gpbfv"]
 [ext_resource type="Script" path="res://scripts/sky_fore.gd" id="4_2x7xm"]
@@ -25,11 +26,15 @@ corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gm08t"]
-bg_color = Color(1, 1, 1, 1)
+bg_color = Color(0.890196, 0.52549, 0.156863, 1)
 corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
+
+[sub_resource type="LabelSettings" id="LabelSettings_2l2jj"]
+font = ExtResource("2_d43c0")
+font_size = 128
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -62,7 +67,8 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("2_d43c0")
+theme_override_font_sizes/font_size = 50
 theme_override_styles/focus = SubResource("StyleBoxEmpty_oewmr")
 theme_override_styles/hover = SubResource("StyleBoxFlat_o5j5j")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_wtkq5")
@@ -76,7 +82,8 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("2_d43c0")
+theme_override_font_sizes/font_size = 50
 theme_override_styles/focus = SubResource("StyleBoxEmpty_oewmr")
 theme_override_styles/hover = SubResource("StyleBoxFlat_o5j5j")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_wtkq5")
@@ -90,7 +97,8 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("2_d43c0")
+theme_override_font_sizes/font_size = 50
 theme_override_styles/focus = SubResource("StyleBoxEmpty_oewmr")
 theme_override_styles/hover = SubResource("StyleBoxFlat_o5j5j")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_wtkq5")
@@ -112,7 +120,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
-text = "Grain Harvester"
+text = "Grain Inc."
+label_settings = SubResource("LabelSettings_2l2jj")
 horizontal_alignment = 1
 vertical_alignment = 1
 

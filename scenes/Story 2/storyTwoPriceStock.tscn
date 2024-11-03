@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdat6nv2ytdwg"]
+
+[ext_resource type="PackedScene" uid="uid://bnjjtlmbgfoow" path="res://scenes/test scenes/price_stock_map_test.tscn" id="1_mfntr"]
+[ext_resource type="PackedScene" uid="uid://cejseeacd3gfd" path="res://scenes/test scenes/price_stock_test.tscn" id="2_50r5q"]
+
+[node name="PriceStockSampleMap" type="Node2D"]
+
+[node name="PriceStockMapTest" parent="." instance=ExtResource("1_mfntr")]
+
+[node name="priceStockTest" parent="." instance=ExtResource("2_50r5q")]

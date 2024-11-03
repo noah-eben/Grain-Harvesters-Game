@@ -19,6 +19,7 @@ script/source = "extends Node2D
 @onready var finishedPlaying = false
 
 func _ready() -> void:
+	print('price_stock_sample')
 	score_display.visible = false
 	return
 
@@ -78,7 +79,8 @@ func _on_button_pressed() -> void:
 "
 
 [sub_resource type="LabelSettings" id="LabelSettings_ww7dw"]
-font_size = 39
+font = ExtResource("1_ymwxk")
+font_size = 60
 
 [sub_resource type="LabelSettings" id="LabelSettings_bji0a"]
 font = ExtResource("1_ymwxk")

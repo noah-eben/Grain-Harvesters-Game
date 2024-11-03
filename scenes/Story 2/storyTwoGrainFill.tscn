@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4aq5xu75i6ty"]
+
+[ext_resource type="PackedScene" uid="uid://yp1hl07t41h4" path="res://scenes/test scenes/grain_fill_map_test.tscn" id="1_5eu10"]
+[ext_resource type="PackedScene" uid="uid://uycmkcbi2wsk" path="res://scenes/test scenes/grain_fill_test.tscn" id="2_5bqxa"]
+
+[node name="grainFillSampleScene" type="Node2D"]
+
+[node name="grainFillMapTest" parent="." instance=ExtResource("1_5eu10")]
+
+[node name="grain_fill_test" parent="." instance=ExtResource("2_5bqxa")]
+position = Vector2(127, 435)
