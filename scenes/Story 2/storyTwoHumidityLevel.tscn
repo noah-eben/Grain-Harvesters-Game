@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://j6lye0xx72kb"]
+[gd_scene load_steps=4 format=3 uid="uid://biur23ideq4gl"]
 
 [ext_resource type="PackedScene" uid="uid://d0v5gcu2cxi07" path="res://scenes/test scenes/humidity_level_map_test.tscn" id="1_mtad6"]
 [ext_resource type="PackedScene" uid="uid://cswctrnatrxto" path="res://scenes/test scenes/humidity_test_bar.tscn" id="2_nkvw5"]
+[ext_resource type="Script" path="res://scenes/Story 2/scripts/storyTwoHumidityLevel.gd" id="3_7nlph"]
 
 [node name="HumidityLevelSampleScene" type="Node2D"]
 
@@ -9,3 +10,4 @@
 
 [node name="humidityTestBar" parent="." instance=ExtResource("2_nkvw5")]
 position = Vector2(16, -12)
+script = ExtResource("3_7nlph")

@@ -1,10 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://cdat6nv2ytdwg"]
+[gd_scene load_steps=4 format=3 uid="uid://ufievbny2qvf"]
 
 [ext_resource type="PackedScene" uid="uid://bnjjtlmbgfoow" path="res://scenes/test scenes/price_stock_map_test.tscn" id="1_mfntr"]
 [ext_resource type="PackedScene" uid="uid://cejseeacd3gfd" path="res://scenes/test scenes/price_stock_test.tscn" id="2_50r5q"]
+[ext_resource type="Script" path="res://scenes/Story 3/scripts/storyThreePriceStock.gd" id="3_g64cy"]
 
 [node name="PriceStockSampleMap" type="Node2D"]
 
 [node name="PriceStockMapTest" parent="." instance=ExtResource("1_mfntr")]
 
 [node name="priceStockTest" parent="." instance=ExtResource("2_50r5q")]
+script = ExtResource("3_g64cy")

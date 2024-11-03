@@ -13,5 +13,6 @@ func run_dialogue(dialogue_string):
 
 func dialogueSignal(arg: String):
 	if arg == "end_tutorial":
-		print('end of tutorial')
+		print('Okay...?')
 		SceneTransition.change_scene("res://scenes/Story 1/storyOneMainArea.tscn")
+		print('did it work?')

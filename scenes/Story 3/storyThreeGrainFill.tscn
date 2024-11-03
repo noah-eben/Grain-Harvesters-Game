@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://d4aq5xu75i6ty"]
+[gd_scene load_steps=4 format=3 uid="uid://htrcgrp5eegs"]
 
 [ext_resource type="PackedScene" uid="uid://yp1hl07t41h4" path="res://scenes/test scenes/grain_fill_map_test.tscn" id="1_5eu10"]
 [ext_resource type="PackedScene" uid="uid://uycmkcbi2wsk" path="res://scenes/test scenes/grain_fill_test.tscn" id="2_5bqxa"]
+[ext_resource type="Script" path="res://scenes/Story 3/scripts/storyThreeGrainFill.gd" id="3_bqo4r"]
 
 [node name="grainFillSampleScene" type="Node2D"]
 
@@ -9,3 +10,4 @@
 
 [node name="grain_fill_test" parent="." instance=ExtResource("2_5bqxa")]
 position = Vector2(127, 435)
+script = ExtResource("3_bqo4r")

@@ -1,6 +1,6 @@
-[gd_scene load_steps=8 format=4 uid="uid://dbwwrss61b0xx"]
+[gd_scene load_steps=8 format=4 uid="uid://bl1scbpg7luxb"]
 
-[ext_resource type="Script" path="res://scripts/end_tutorial_area.gd" id="1_4ki4w"]
+[ext_resource type="Script" path="res://scenes/Story 2/scripts/storyTwoEnd.gd" id="1_dm2ji"]
 [ext_resource type="Texture2D" uid="uid://b6ibgtmbdjs3a" path="res://assets/sky_back.png" id="2_c8lx0"]
 [ext_resource type="Script" path="res://scripts/sky_middle.gd" id="3_a07sx"]
 [ext_resource type="Texture2D" uid="uid://c4cdbvocxa36o" path="res://assets/sky_middle.png" id="4_ihouo"]
@@ -9,7 +9,7 @@
 [ext_resource type="TileSet" uid="uid://c1vwb5t31smkh" path="res://tilemap resources/grain_fill_map_test.tres" id="7_7oshj"]
 
 [node name="MainArea" type="Node2D"]
-script = ExtResource("1_4ki4w")
+script = ExtResource("1_dm2ji")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 

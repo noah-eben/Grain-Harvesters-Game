@@ -1,0 +1,8 @@
+join character1 left
+Well...
+That's it!
+I guess you're going to take over from here now.
+Thanks for...EVERYTHING!
+GOOD BYE NOW!
+- End
+	[signal arg="start_next_scene"]

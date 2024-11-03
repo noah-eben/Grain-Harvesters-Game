@@ -14,4 +14,4 @@ func run_dialogue(dialogue_string):
 func dialogueSignal(arg: String):
 	if arg == "start_next_scene":
 		print('start_next_scene')
-		SceneTransition.change_scene("res://scenes/menu.tscn")
+		SceneTransition.change_scene("res://scenes/Story 2/storyTwoMainArea.tscn")

@@ -1,0 +1,4 @@
+join character1 left
+This is it! Story 3 at last! Let. it. begin!
+- Finish it!
+	[signal arg="start_next_scene"]

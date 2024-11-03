@@ -75,7 +75,7 @@ func displayScore(delta):
 
 
 func _on_button_pressed() -> void:
-	SceneTransition.change_scene(\"res://scenes/end_tutroial_area.tscn\")
+	SceneTransition.change_scene(\"res://scenes/end_tutorial_area.tscn\")
 "
 
 [sub_resource type="LabelSettings" id="LabelSettings_ww7dw"]

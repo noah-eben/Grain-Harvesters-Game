@@ -12,6 +12,6 @@ func run_dialogue(dialogue_string):
 	Dialogic.start(dialogue_string)
 
 func dialogueSignal(arg: String):
-	if arg == "start_game_scene":
+	if arg == "start_next_scene":
 		print('signal received')
 		SceneTransition.change_scene("res://scenes/Story 1/storyOneGrainFill.tscn")
