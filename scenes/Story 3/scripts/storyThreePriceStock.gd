@@ -49,7 +49,7 @@ func trackBar(delta):
 	return score
 
 func stopBar(delta):
-	if Input.is_action_just_pressed('ui_accept'):
+	if Input.is_action_just_pressed('dialogic_default_action'):
 		isBarMoving = false
 		finishedPlaying = true
 	return
